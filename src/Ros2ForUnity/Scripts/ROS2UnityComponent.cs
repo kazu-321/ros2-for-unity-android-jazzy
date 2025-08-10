@@ -46,7 +46,7 @@ public class ROS2UnityComponent : MonoBehaviour
         lock (mutex)
         {
             if (ros2forUnity == null)
-                LazyConstruct();
+                return false; // avoid constructing from non-main threads
             return (nodes != null && ros2forUnity.Ok());
         }
     }
@@ -146,7 +146,7 @@ public class ROS2UnityComponent : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!initialized)
+    if (!initialized && ros2forUnity != null)
         {
             Thread publishThread = new Thread(() => Tick());
             publishThread.Start();
