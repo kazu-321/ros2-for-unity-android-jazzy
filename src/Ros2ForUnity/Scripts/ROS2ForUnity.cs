@@ -261,7 +261,7 @@ internal class ROS2ForUnity
         Ros2csLogger.setCallback(LogLevel.WARNING, Debug.LogWarning);
         Ros2csLogger.setCallback(LogLevel.INFO, Debug.Log);
         Ros2csLogger.setCallback(LogLevel.DEBUG, Debug.Log);
-        Ros2csLogger.LogLevel = LogLevel.WARNING;
+        Ros2csLogger.LogLevel = LogLevel.DEBUG;
     }
 
     private string GetMetadataValue(XmlDocument doc, string valuePath)
